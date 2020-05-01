@@ -4,6 +4,7 @@ import {createStore} from "redux"
 import {Provider} from "react-redux"
 import App from "./App"
 import anecdoteReducer from "./reducers/anecdoteReducer"
+require("./styles.css")
 
 const store = createStore(anecdoteReducer)
 
