@@ -36,6 +36,10 @@ const anecdoteReducer = (state = initialState, action) => {
                     : anecdote
             })
             return updatedAnecdotes
+        case "CREATE":
+            const newAnecdote = generateObject(action.content)
+            const updatedState = [...state, newAnecdote]
+            return updatedState
         default:
             console.log("Just printin'")
             console.log(initialState)
