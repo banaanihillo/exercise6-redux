@@ -1,4 +1,4 @@
-const notificationReducer = (state = "No notifications yet", action) => {
+const notificationReducer = (state = null, action) => {
     switch (action.type) {
         case "NOTIFY":
             return action.notification
@@ -6,10 +6,16 @@ const notificationReducer = (state = "No notifications yet", action) => {
             return state
     }
 }
-export const notify = (notification) => {
+export const displayNotification = (notification) => {
     return {
         type: "NOTIFY",
         notification: notification
+    }
+}
+export const hideNotification = () => {
+    return {
+        type: "NOTIFY",
+        notification: null
     }
 }
 
