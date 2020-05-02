@@ -5,7 +5,7 @@ import {addVote} from "../reducers/anecdoteReducer"
 const AnecdoteList = () => {
     const dispatch = useDispatch()
     const anecdotes = useSelector(state => 
-        state.reverse(state.sort((comparable, comparator) => 
+        state.anecdotes.reverse(state.anecdotes.sort((comparable, comparator) => 
             (comparable.votes - comparator.votes)
         ))
     )

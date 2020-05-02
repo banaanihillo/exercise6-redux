@@ -41,10 +41,9 @@ const anecdoteReducer = (state = initialState, action) => {
             const updatedState = [...state, newAnecdote]
             return updatedState
         default:
-            console.log("Just printin'")
-            console.log(initialState)
+            return state
     }
-    return state
+    
 }
 
 export const addAnecdote = (content) => {
