@@ -6,11 +6,21 @@ import {displayNotification, hideNotification} from "../reducers/notificationRed
 
 const AnecdoteList = () => {
     const dispatch = useDispatch()
-    const anecdotes = useSelector(state => 
-        state.anecdotes.reverse(state.anecdotes.sort((comparable, comparator) => 
-            (comparable.votes - comparator.votes)
-        ))
-    )
+    const anecdotes = useSelector(state => {
+        if (state.filteredAnecdotes === null) {
+            return state.anecdotes.reverse(
+                state.anecdotes.sort((comparable, comparator) => 
+                    (comparable.votes - comparator.votes)
+                )
+            )
+        } else {
+            return state.filteredAnecdotes.reverse(
+                state.filteredAnecdotes.sort((comparable, comparator) => 
+                    (comparable.votes - comparator.votes)
+                )
+            )
+        }
+    })
 
     const vote = (anecdote) => {
         dispatch(addVote(anecdote.id))
