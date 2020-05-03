@@ -15,6 +15,7 @@ const initialAnecdotes = [
 ]
 */
 
+/*
 const idGenerator = () => (100000 * Math.random()).toFixed(0)
 
 const generateObject = (anecdote) => {
@@ -24,7 +25,7 @@ const generateObject = (anecdote) => {
         votes: 0
     }
 }
-
+*/
 //const initialState = initialAnecdotes.map(generateObject)
 
 const anecdoteReducer = (state = [], action) => {
@@ -41,8 +42,8 @@ const anecdoteReducer = (state = [], action) => {
             })
             return updatedAnecdotes
         case "CREATE":
-            const newAnecdote = generateObject(action.content)
-            const updatedState = [...state, newAnecdote]
+            //const newAnecdote = generateObject(action.content)
+            const updatedState = [...state, action.content]
             return updatedState
         default:
             return state
