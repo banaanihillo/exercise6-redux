@@ -1,3 +1,4 @@
+/*
 const initialAnecdotes = [
     "If it hurts, do it more often",
     "Adding [person]power to a late software project makes it later!",
@@ -12,6 +13,7 @@ const initialAnecdotes = [
         Therefore, if you write the code as cleverly as possible,
         you are, by definition, not smart enough to debug it.`
 ]
+*/
 
 const idGenerator = () => (100000 * Math.random()).toFixed(0)
 
@@ -23,10 +25,12 @@ const generateObject = (anecdote) => {
     }
 }
 
-const initialState = initialAnecdotes.map(generateObject)
+//const initialState = initialAnecdotes.map(generateObject)
 
-const anecdoteReducer = (state = initialState, action) => {
+const anecdoteReducer = (state = [], action) => {
     switch (action.type) {
+        case "INITIALIZE":
+            return action.data
         case "VOTE":
             const anecdoteToVote = state.find(anecdote => anecdote.id === action.id)
             const votedAnecdote = {...anecdoteToVote, votes: anecdoteToVote.votes + 1}
@@ -44,6 +48,13 @@ const anecdoteReducer = (state = initialState, action) => {
             return state
     }
     
+}
+
+export const initializeAnecdotes = (anecdotes) => {
+    return {
+        type: "INITIALIZE",
+        data: anecdotes
+    }
 }
 
 export const addAnecdote = (content) => {
