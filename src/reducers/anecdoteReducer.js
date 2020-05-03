@@ -14,8 +14,7 @@ const anecdoteReducer = (state = [], action) => {
             })
             return updatedAnecdotes
         case "CREATE":
-
-            const updatedState = [...state, action.content]
+            const updatedState = [...state, action.data]
             return updatedState
         default:
             return state
