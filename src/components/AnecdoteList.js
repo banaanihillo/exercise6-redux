@@ -14,8 +14,13 @@ const AnecdoteList = () => {
                 )
             )
         } else {
-            return state.filteredAnecdotes.reverse(
-                state.filteredAnecdotes.sort((comparable, comparator) => 
+            const anecdotesAfterFiltering = state.anecdotes.filter(anecdote => {
+                return state.filteredAnecdotes.some(filtered =>
+                    anecdote.content === filtered.content
+                )
+            })
+            return anecdotesAfterFiltering.reverse(
+                anecdotesAfterFiltering.sort((comparable, comparator) => 
                     (comparable.votes - comparator.votes)
                 )
             )
